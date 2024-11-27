@@ -1,0 +1,48 @@
+{
+  "trucks": [
+    {
+      "id": 1,
+      "plate_number": "XYZ123",
+      "capacity": "10 tons",
+      "status": "Available"
+    },
+    {
+      "id": 2,
+      "plate_number": "ABC789",
+      "capacity": "15 tons",
+      "status": "Delivering"
+    }
+  ],
+  "drivers": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "license_number": "L123456",
+      "assigned_truck": 2,
+      "contact_number": "123-456-7890"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "license_number": "L654321",
+      "assigned_truck": null,
+      "contact_number": "987-654-3210"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "customer_name": "Acme Corp",
+      "assigned_truck": 2,
+      "assigned_driver": 1,
+      "order_status": "In Progress"
+    },
+    {
+      "id": 2,
+      "customer_name": "Global Inc",
+      "assigned_truck": null,
+      "assigned_driver": null,
+      "order_status": "Pending"
+    }
+  ]
+}
