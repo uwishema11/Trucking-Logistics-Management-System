@@ -1,0 +1,49 @@
+.sidebar {
+  width: 224px;
+  background-color:#457b9d;;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+  left: 224px;
+  transition: left 0.3s ease;
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .menu {
+    list-style: none;
+    padding: 0;
+
+    .menu_item {
+      margin-bottom: 15px;
+
+      .menu_link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        font-size: 1rem;
+        padding: 10px;
+
+        &:hover {
+          background-color: #004080;
+          border-radius: 5px;
+          padding: 5px;
+        }
+
+        .menu_text {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    margin-left: -220px;
+    width: auto;
+  }
+  &.open {
+    margin-left: 0;
+  }
+}
