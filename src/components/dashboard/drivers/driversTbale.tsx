@@ -2,35 +2,36 @@
 import React, { useState } from "react";
 import { Search, PlusCircle } from "lucide-react";
 import { ColumnDef } from "@tanstack/react-table";
-import { useTruck } from "@/hooks/trucks/useTruck";
-import { truckData, editTruckData } from "@/types/truck";
+import { driverData, editDriverData } from "@/types/driver";
 import { MoreHorizontal } from "lucide-react";
 import Table from "../ReusableTable";
-import TruckForm from "./TruckFom";
-import useCreateTruck from "@/hooks/trucks/useTruckMutation";
-import "./Trucks.scss";
+import DriverForm from "./driverForm";
+import useDriver from "@/hooks/drivers/useDriver";
+import { useGetDrivers } from "@/hooks/drivers/useGetDrivers";
+import "./driversTable.scss";
 
-const Trucks = () => {
+const DriversTable = () => {
   const [showDropdown, setShowDropdown] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("All");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [formMode, setFormMode] = useState<"add" | "edit">("add");
-  const [editData, setEditData] = useState<editTruckData | null>(null);
+  const [editData, setEditData] = useState<editDriverData | null>(null);
 
-  const { handleAddSubmit, handleEditSubmit, deleteTruckMutation } =
-    useCreateTruck();
+  const { handleAddSubmit, handleEditSubmit, deleteDriverMutation } =
+    useDriver();
 
-  const { isLoading, isError, data, error } = useTruck();
+  const { isLoading, isError, data, error } = useGetDrivers();
 
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <span>{error.message}</span>;
 
-  const trucksColumns: ColumnDef<truckData>[] = [
-    { accessorKey: "id", header: "Truck-ID" },
-    { accessorKey: "plate_number", header: "Plate-Number" },
-    { accessorKey: "capacity", header: "Truck-Capacity" },
+  const trucksColumns: ColumnDef<driverData>[] = [
+    { accessorKey: "id", header: "Driver-ID" },
+    { accessorKey: "name", header: "Driver-Name" },
+    { accessorKey: "assigned_truck", header: "Assigned_Truck-ID" },
+    { accessorKey: "contact_number", header: "Contact_number" },
     { accessorKey: "status", header: "Status" },
     {
       header: "Actions",
@@ -49,7 +50,7 @@ const Trucks = () => {
                   <a onClick={() => openFormForEdit(row.original)}>Edit</a>
                 </li>
                 <li>
-                  <a onClick={() => handleDeleteTruck(row.original.id)}>
+                  <a onClick={() => handleDeleteDriver(row.original.id)}>
                     Delete
                   </a>
                 </li>
@@ -61,11 +62,11 @@ const Trucks = () => {
     },
   ];
 
-  const filteredData = data.filter((truck: truckData) => {
-    const matchesSearch = truck.plate_number
+  const filteredData = data.filter((driver: driverData) => {
+    const matchesSearch = driver.name
       .toLowerCase()
       .includes(search.toLowerCase());
-    const matchesFilter = filter === "All" || truck.status === filter;
+    const matchesFilter = filter === "All" || driver.status === filter;
     return matchesSearch && matchesFilter;
   });
 
@@ -87,9 +88,9 @@ const Trucks = () => {
     setIsFormOpen(true);
   };
 
-  const openFormForEdit = (truck: truckData) => {
+  const openFormForEdit = (driver: editDriverData) => {
     setFormMode("edit");
-    setEditData(truck);
+    setEditData(driver);
     setIsFormOpen(true);
     setShowDropdown(null);
   };
@@ -99,20 +100,21 @@ const Trucks = () => {
     setEditData(null);
   };
 
-  const handleSubmitForm = (formData: truckData | editTruckData) => {
+  const handleSubmitForm = (formData: driverData | editDriverData) => {
+    console.log("gello");
     if (formMode === "add") {
-      console.log("Adding truck:", formData as truckData);
-      handleAddSubmit(formData);
+      handleAddSubmit(formData as driverData);
+      setIsFormOpen(false);
     } else if (formMode === "edit") {
-      handleEditSubmit(formData);
-      console.log("Editing truck:", formData as editTruckData);
+      handleEditSubmit(formData as editDriverData);
+      setIsFormOpen(false);
     }
     setIsFormOpen(false);
   };
 
-  const handleDeleteTruck = (id: string) => {
-    console.log("Deleting truck with ID:", id);
-    deleteTruckMutation.mutateAsync(id);
+  const handleDeleteDriver = (id: string) => {
+    console.log("Deleting driver with ID:", id);
+    deleteDriverMutation.mutateAsync(id);
     setShowDropdown(null);
   };
 
@@ -123,7 +125,7 @@ const Trucks = () => {
           <Search className="search_icon" />
           <input
             type="text"
-            placeholder="Search..."
+            placeholder="Search by driver's name..."
             value={search}
             onChange={handleSearchChange}
             className="search_input"
@@ -167,7 +169,7 @@ const Trucks = () => {
       </div>
       <Table data={filteredData} columns={trucksColumns} />
       {isFormOpen && (
-        <TruckForm
+        <DriverForm
           onSubmit={handleSubmitForm}
           onClose={handleCloseForm}
           initialData={formMode === "edit" ? editData : null}
@@ -177,4 +179,4 @@ const Trucks = () => {
   );
 };
 
-export default Trucks;
+export default DriversTable;

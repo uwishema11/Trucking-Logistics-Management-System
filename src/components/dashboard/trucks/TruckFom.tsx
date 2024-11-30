@@ -98,7 +98,7 @@ const TruckForm: React.FC<TruckFormProps> = ({
           <div className="form-group">
             <label htmlFor="capacity">Truck Capacity</label>
             <input
-              type="number"
+              type="text"
               id="capacity"
               name="capacity"
               value={formData.capacity}

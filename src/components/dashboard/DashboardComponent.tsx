@@ -4,21 +4,34 @@ import { useSession } from "next-auth/react";
 import Card from "../Card";
 import styles from "./DashboardComponent.module.scss";
 
-import { useTruck } from "@/hooks/drivers/useTruck";
+import { useTruck } from "@/hooks/trucks/useTruck";
+import { useGetDrivers } from "@/hooks/drivers/useGetDrivers";
 
 const DashboardComponent = () => {
   const { data: session } = useSession();
   const userName = session?.user?.name;
 
   const { isLoading, isError, data, error } = useTruck();
+  const {
+    isLoading: loading,
+    isError: isErr,
+    data: list,
+    error: err,
+  } = useGetDrivers();
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading || loading) return <p>Loading...</p>;
   if (isError) {
     return <span>{error.message}</span>;
+  }
+  if (isErr) {
+    return <span>{err.message}</span>;
   }
 
   const availableTrucks = data?.filter(
     (truck: { status: string }) => truck.status == "Available"
+  );
+  const availableDrivers = list?.filter(
+    (driver: { status: string }) => driver.status == "Available"
   );
 
   return (
@@ -34,6 +47,8 @@ const DashboardComponent = () => {
         <h2 className={styles.heading}>Dashboard Summary</h2>
         <div className={styles.summary_container}>
           <Card title="Available Trucks" value={availableTrucks.length} />
+          <Card title="Available Driver" value={availableDrivers.length} />
+          <Card title="Available Driver" value={availableDrivers.length} />
         </div>
       </main>
     </div>

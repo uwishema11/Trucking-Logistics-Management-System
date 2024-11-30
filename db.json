@@ -7,12 +7,6 @@
       "status": "Available"
     },
     {
-      "id": "2",
-      "plate_number": "ABC789",
-      "capacity": "15 tons",
-      "status": "Delivering"
-    },
-    {
       "id": "3",
       "plate_number": "RAB326B",
       "capacity": 36,
@@ -36,15 +30,33 @@
       "id": "1",
       "name": "John Doe",
       "license_number": "L123456",
-      "assigned_truck": 2,
+      "assigned_truck": "2",
+      "status": "Delivering",
       "contact_number": "123-456-7890"
     },
     {
       "id": "2",
-      "name": "Jane Smith",
-      "license_number": "L654321",
-      "assigned_truck": null,
-      "contact_number": "987-654-3210"
+      "name": "Jean Makara",
+      "license_number": "L123456",
+      "assigned_truck": "1",
+      "contact_number": "0783210279",
+      "status": "Available"
+    },
+    {
+      "id": "5",
+      "name": "Peter Green",
+      "license_number": "L1235t",
+      "assigned_truck": "6",
+      "contact_number": "07843265794",
+      "status": "Available"
+    },
+    {
+      "id": "4",
+      "name": "Green Irakoze",
+      "license_number": "L12345t",
+      "assigned_truck": "3",
+      "contact_number": "0783210279",
+      "status": "Available"
     }
   ],
   "orders": [
