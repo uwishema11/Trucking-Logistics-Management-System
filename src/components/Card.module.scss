@@ -1,0 +1,37 @@
+.small_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #f9f9f9;
+  width: 100%;
+  max-width: 200px;
+  margin: 0.5rem;
+
+  h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0070f3;
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    text-align: left;
+    justify-content: space-between;
+    max-width: 300px;
+
+    h3 {
+      margin-right: 1rem;
+    }
+  }
+}

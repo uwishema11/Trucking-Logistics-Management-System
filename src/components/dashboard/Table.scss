@@ -1,0 +1,123 @@
+.table-container {
+  margin-top: 20px;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f4f4f4;
+  }
+
+  .status-badge {
+    padding: 5px 10px;
+    border-radius: 12px;
+    color: #fff;
+
+    &.delivering {
+      background-color: orange;
+    }
+
+    &.available {
+      background-color: green;
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 8px;
+
+    .edit-btn {
+      background-color: #007bff;
+      color: #fff;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .delete-btn {
+      background-color: #dc3545;
+      color: #fff;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  .search-input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  .filter-btn,
+  .add-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
+.rows-per-page {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  color: #6a6d70;
+  margin-top: 2rem;
+
+  label {
+    margin-right: 0.5rem;
+    font-weight: bold;
+  }
+
+  select {
+    background-color: white;
+    padding: 0.2rem;
+    color: black;
+    font-size: 0.875rem;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .pagination-controls {
+    display: flex;
+    gap: 1rem;
+  }
+  .previous,
+  .next {
+    background-color: white;
+    color: black;
+    width: 5rem;
+    height: 2rem;
+    cursor: pointer;
+  }
+  .number_of_page {
+    margin-top: 0.5rem;
+  }
+}

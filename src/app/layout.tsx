@@ -19,9 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <SessionProvider>
-          <ReactQueryClientProvider>{children}</ReactQueryClientProvider>
-        </SessionProvider>
+        <ReactQueryClientProvider>
+          <SessionProvider>{children}</SessionProvider>
+        </ReactQueryClientProvider>
       </body>
     </html>
   );

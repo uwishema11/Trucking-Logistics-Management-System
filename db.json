@@ -1,28 +1,46 @@
 {
   "trucks": [
     {
-      "id": 1,
-      "plate_number": "XYZ123",
-      "capacity": "10 tons",
+      "id": "1",
+      "plate_number": "XYZ124",
+      "capacity": 67,
       "status": "Available"
     },
     {
-      "id": 2,
+      "id": "2",
       "plate_number": "ABC789",
       "capacity": "15 tons",
       "status": "Delivering"
+    },
+    {
+      "id": "3",
+      "plate_number": "RAB326B",
+      "capacity": 36,
+      "status": "Available"
+    },
+    {
+      "id": "4",
+      "plate_number": "RAB32t",
+      "capacity": 13,
+      "status": "Available"
+    },
+    {
+      "id": "6",
+      "plate_number": "XYZ1287",
+      "capacity": 46,
+      "status": "Available"
     }
   ],
   "drivers": [
     {
-      "id": 1,
+      "id": "1",
       "name": "John Doe",
       "license_number": "L123456",
       "assigned_truck": 2,
       "contact_number": "123-456-7890"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Jane Smith",
       "license_number": "L654321",
       "assigned_truck": null,
@@ -31,14 +49,14 @@
   ],
   "orders": [
     {
-      "id": 1,
+      "id": "1",
       "customer_name": "Acme Corp",
       "assigned_truck": 2,
       "assigned_driver": 1,
       "order_status": "In Progress"
     },
     {
-      "id": 2,
+      "id": "2",
       "customer_name": "Global Inc",
       "assigned_truck": null,
       "assigned_driver": null,
