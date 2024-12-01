@@ -2,27 +2,27 @@
   "trucks": [
     {
       "id": "1",
-      "plate_number": "XYZ124",
+      "plate_number": "XYZ1245",
       "capacity": 67,
       "status": "Available"
     },
     {
-      "id": "3",
+      "id": "2",
       "plate_number": "RAB326B",
       "capacity": 36,
       "status": "Available"
     },
     {
-      "id": "4",
+      "id": "3",
       "plate_number": "RAB32t",
       "capacity": 13,
-      "status": "Available"
+      "status": "Delivering"
     },
     {
-      "id": "6",
-      "plate_number": "XYZ1287",
+      "id": "4",
+      "plate_number": "XYZ128",
       "capacity": 46,
-      "status": "Available"
+      "status": "Delivering"
     }
   ],
   "drivers": [
@@ -31,24 +31,16 @@
       "name": "John Doe",
       "license_number": "L123456",
       "assigned_truck": "2",
-      "status": "Delivering",
+      "status": "Available",
       "contact_number": "123-456-7890"
     },
     {
-      "id": "2",
-      "name": "Jean Makara",
-      "license_number": "L123456",
-      "assigned_truck": "1",
-      "contact_number": "0783210279",
-      "status": "Available"
-    },
-    {
-      "id": "5",
+      "id": "3",
       "name": "Peter Green",
       "license_number": "L1235t",
-      "assigned_truck": "6",
+      "assigned_truck": "4",
       "contact_number": "07843265794",
-      "status": "Available"
+      "status": "Delivering"
     },
     {
       "id": "4",
@@ -56,23 +48,45 @@
       "license_number": "L12345t",
       "assigned_truck": "3",
       "contact_number": "0783210279",
+      "status": "Delivering"
+    },
+    {
+      "id": "89e4fae8-532d-4965-ab6c-03e0cfe4ca76",
+      "name": "Ndayamabaje",
+      "license_number": "L123uYt",
+      "assigned_truck": "2",
+      "contact_number": "0783210279",
       "status": "Available"
     }
   ],
   "orders": [
     {
-      "id": "1",
-      "customer_name": "Acme Corp",
-      "assigned_truck": 2,
-      "assigned_driver": 1,
-      "order_status": "In Progress"
+      "id": "ee69243f-096c-4d78-9a4a-aba30b377972",
+      "customer_name": "Iranzi Jean",
+      "assigned_truck": "1",
+      "assigned_driver": "2",
+      "order_status": "complete"
     },
     {
-      "id": "2",
-      "customer_name": "Global Inc",
-      "assigned_truck": null,
-      "assigned_driver": null,
-      "order_status": "Pending"
+      "id": "47f8f54e-8e9f-45b5-9b7d-f8a7633fb0ea",
+      "customer_name": "Mukashimwe",
+      "assigned_truck": "1",
+      "assigned_driver": "2",
+      "order_status": "complete"
+    },
+    {
+      "id": "d20bb14f-fcf8-4ab8-b5f4-c859db263642",
+      "customer_name": "Nyiraneza Elina",
+      "assigned_truck": "2",
+      "assigned_driver": "2",
+      "order_status": "complete"
+    },
+    {
+      "id": "4ad8472e-5202-43c0-9192-7a9d1332ef69",
+      "customer_name": "Jean",
+      "assigned_truck": "2",
+      "assigned_driver": "1",
+      "order_status": "pending"
     }
   ]
 }

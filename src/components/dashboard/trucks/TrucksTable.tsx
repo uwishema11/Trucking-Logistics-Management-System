@@ -5,10 +5,10 @@ import { ColumnDef } from "@tanstack/react-table";
 import { useTruck } from "@/hooks/trucks/useTruck";
 import { truckData, editTruckData } from "@/types/truck";
 import { MoreHorizontal } from "lucide-react";
-import Table from "../ReusableTable";
+import Table from "../Table";
 import TruckForm from "./TruckFom";
 import useCreateTruck from "@/hooks/trucks/useTruckMutation";
-import "./Trucks.scss";
+import "@/styles/tableStyles.scss";
 
 const Trucks = () => {
   const [showDropdown, setShowDropdown] = useState<string | null>(null);

@@ -1,15 +1,23 @@
-import styles from './Card.module.scss'
+import styles from "./Card.module.scss";
 
 interface cardProps {
-  title: string;
-  value: string | number;
+  Total: string;
+  TotalValue: string | number;
+  Available: string | number;
+  AvailableValue: string | number;
 }
 
-const Card = ({ title, value }: cardProps) => {
+const Card = ({ Total, TotalValue, Available, AvailableValue }: cardProps) => {
   return (
     <div className={styles.small_card}>
-      <h3>{title}</h3>
-      <p>{value}</p>
+      <div className= {styles.total}>
+        <h3>{Total}</h3>
+        <p>{TotalValue}</p>
+      </div>
+      <div className= {styles.Available}>
+        <h3>{Available}</h3>
+        <p>{AvailableValue}</p>
+      </div>
     </div>
   );
 };

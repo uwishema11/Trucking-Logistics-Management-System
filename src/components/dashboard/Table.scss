@@ -1,8 +1,8 @@
-.table-container {
+.table_container {
   margin-top: 20px;
 }
 
-.custom-table {
+.custom_table {
   width: 100%;
   border-collapse: collapse;
 
@@ -17,7 +17,7 @@
     background-color: #f4f4f4;
   }
 
-  .status-badge {
+  .status_badge {
     padding: 5px 10px;
     border-radius: 12px;
     color: #fff;
@@ -35,7 +35,7 @@
     display: flex;
     gap: 8px;
 
-    .edit-btn {
+    .edit_btn {
       background-color: #007bff;
       color: #fff;
       padding: 5px 10px;
@@ -44,7 +44,7 @@
       cursor: pointer;
     }
 
-    .delete-btn {
+    .delete_btn {
       background-color: #dc3545;
       color: #fff;
       padding: 5px 10px;
@@ -60,14 +60,14 @@
   justify-content: space-between;
   margin-bottom: 20px;
 
-  .search-input {
+  .search_input {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
   }
 
-  .filter-btn,
-  .add-btn {
+  .filter_btn,
+  .add_btn {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -80,7 +80,7 @@
     }
   }
 }
-.rows-per-page {
+.rows_per_page {
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -95,7 +95,7 @@
   select {
     background-color: white;
     padding: 0.2rem;
-    color: black;
+    color: #6a6d70;
     font-size: 0.875rem;
   }
 }
@@ -112,9 +112,11 @@
   .previous,
   .next {
     background-color: white;
-    color: black;
+    color: #6a6d70;
+    font-weight: bold;
     width: 5rem;
     height: 2rem;
+    margin: 4px;
     cursor: pointer;
   }
   .number_of_page {

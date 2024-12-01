@@ -5,12 +5,13 @@ import { ColumnDef } from "@tanstack/react-table";
 import { driverData, editDriverData } from "@/types/driver";
 import { MoreHorizontal } from "lucide-react";
 import Table from "../Table";
-import DriverForm from "./driverForm";
-import useDriver from "@/hooks/drivers/useDriver";
-import { useGetDrivers } from "@/hooks/drivers/useGetDrivers";
+import OrdersForm from "./ordersForm";
+import useOrders from "@/hooks/orders/useOrders";
+import { useGetOrders } from "@/hooks/orders/useGetOrders";
+import { editOrderData, orderData } from "@/types/order";
 import "@/styles/tableStyles.scss";
 
-const DriversTable = () => {
+const OrdersTable = () => {
   const [showDropdown, setShowDropdown] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("All");
@@ -19,20 +20,20 @@ const DriversTable = () => {
   const [formMode, setFormMode] = useState<"add" | "edit">("add");
   const [editData, setEditData] = useState<editDriverData | null>(null);
 
-  const { handleAddSubmit, handleEditSubmit, deleteDriverMutation } =
-    useDriver();
+  const { handleAddSubmit, handleEditSubmit, deleteOrderMutation } =
+    useOrders();
 
-  const { isLoading, isError, data, error } = useGetDrivers();
+  const { isLoading, isError, data, error } = useGetOrders();
 
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <span>{error.message}</span>;
 
   const trucksColumns: ColumnDef<driverData>[] = [
-    { accessorKey: "id", header: "Driver-ID" },
-    { accessorKey: "name", header: "Driver-Name" },
+    { accessorKey: "id", header: "Customer-ID" },
+    { accessorKey: "customer_name", header: "Customer-Name" },
     { accessorKey: "assigned_truck", header: "Assigned_Truck-ID" },
-    { accessorKey: "contact_number", header: "Contact_number" },
-    { accessorKey: "status", header: "Status" },
+    { accessorKey: "assigned_driver", header: "Assigned_Driver-ID" },
+    { accessorKey: "order_status", header: "Order_Status" },
     {
       header: "Actions",
       cell: ({ row }) => (
@@ -62,11 +63,11 @@ const DriversTable = () => {
     },
   ];
 
-  const filteredData = data.filter((driver: driverData) => {
-    const matchesSearch = driver.name
+  const filteredData = data.filter((order: orderData) => {
+    const matchesSearch = order.customer_name
       .toLowerCase()
       .includes(search.toLowerCase());
-    const matchesFilter = filter === "All" || driver.status === filter;
+    const matchesFilter = filter === "All" || order.order_status === filter;
     return matchesSearch && matchesFilter;
   });
 
@@ -100,13 +101,13 @@ const DriversTable = () => {
     setEditData(null);
   };
 
-  const handleSubmitForm = (formData: driverData | editDriverData) => {
-    console.log("gello");
+  const handleSubmitForm = (formData: orderData | editOrderData) => {
     if (formMode === "add") {
-      handleAddSubmit(formData as driverData);
+      handleAddSubmit(formData as orderData);
       setIsFormOpen(false);
     } else if (formMode === "edit") {
-      handleEditSubmit(formData as editDriverData);
+      handleEditSubmit(formData as editOrderData);
+
       setIsFormOpen(false);
     }
     setIsFormOpen(false);
@@ -114,7 +115,7 @@ const DriversTable = () => {
 
   const handleDeleteDriver = (id: string) => {
     console.log("Deleting driver with ID:", id);
-    deleteDriverMutation.mutateAsync(id);
+    deleteOrderMutation.mutateAsync(id);
     setShowDropdown(null);
   };
 
@@ -125,7 +126,7 @@ const DriversTable = () => {
           <Search className="search_icon" />
           <input
             type="text"
-            placeholder="Search by driver's name..."
+            placeholder="Search here..."
             value={search}
             onChange={handleSearchChange}
             className="search_input"
@@ -149,15 +150,15 @@ const DriversTable = () => {
               </div>
               <div
                 className="filter_option"
-                onClick={() => handleFilterChange("Available")}
+                onClick={() => handleFilterChange("complete")}
               >
-                Available
+                complete
               </div>
               <div
                 className="filter_option"
-                onClick={() => handleFilterChange("Delivering")}
+                onClick={() => handleFilterChange("pending")}
               >
-                Delivering
+                pending
               </div>
             </div>
           )}
@@ -169,7 +170,7 @@ const DriversTable = () => {
       </div>
       <Table data={filteredData} columns={trucksColumns} />
       {isFormOpen && (
-        <DriverForm
+        <OrdersForm
           onSubmit={handleSubmitForm}
           onClose={handleCloseForm}
           initialData={formMode === "edit" ? editData : null}
@@ -179,4 +180,4 @@ const DriversTable = () => {
   );
 };
 
-export default DriversTable;
+export default OrdersTable;
