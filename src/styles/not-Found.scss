@@ -1,0 +1,45 @@
+.not-found-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7fafc;  
+}
+
+.not-found-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.not-found-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #e53e3e; 
+  margin-bottom: 1rem;
+}
+
+.not-found-message {
+  font-size: 1.125rem;
+  color: #4a5568;  
+  margin-bottom: 2rem;
+}
+
+.not-found-button {
+  display: inline-block;
+  background-color: #3182ce;  
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #2b6cb0;  
+  }
+}

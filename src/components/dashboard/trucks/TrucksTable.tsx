@@ -103,12 +103,13 @@ const Trucks = () => {
   };
 
   const handleSubmitForm = (formData: truckData | editTruckData) => {
+    console.log("Form submitted with data:", formData);
     if (formMode === "add") {
-      console.log("Adding truck:", formData as truckData);
+      console.log("Adding truck:", formData);
       handleAddSubmit(formData);
     } else if (formMode === "edit") {
+      console.log("Editing truck:", formData);
       handleEditSubmit(formData);
-      console.log("Editing truck:", formData as editTruckData);
     }
     setIsFormOpen(false);
   };
@@ -126,7 +127,7 @@ const Trucks = () => {
           <Search className="search_icon" />
           <input
             type="text"
-            placeholder="Search..."
+            placeholder="Search by plate_number..."
             value={search}
             onChange={handleSearchChange}
             className="search_input"

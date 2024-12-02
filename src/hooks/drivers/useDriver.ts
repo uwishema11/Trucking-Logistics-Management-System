@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 import { addDriver, deleteDriver, editDriver } from "@/services/driversService";
 import { driverData, editDriverData } from "@/types/driver";
@@ -13,13 +14,18 @@ export default function useDriver() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["drivers"] });
-      window.alert("driver added succfully");
+      toast.success("driver added successfully!");
     },
     onError: (error: unknown) => {
       if (error instanceof Error) {
-        console.log("Error: " + error.message, "error");
+        toast.error(
+          error.message ||
+            "An error occurred while adding the driver. Please try again"
+        );
       } else {
-        console.log("An unexpected error occurred", "error");
+        toast.error(
+          "An error occurred while adding the driver.Please try again"
+        );
       }
     },
   });
@@ -31,14 +37,18 @@ export default function useDriver() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["drivers"] });
-      window.alert("deleted succfully");
+      toast.success("driver deleted successfully!");
     },
     onError: (error: unknown) => {
       if (error instanceof Error) {
-        console.log("Error: " + error.message, "error");
+        toast.error(
+          error.message ||
+            "An error occurred while deleting the driver. Please try again"
+        );
       } else {
-        console.log("An unexpected error occurred", "error");
-        window.alert("");
+        toast.error(
+          "An error occurred while deleting the driver. Please try again"
+        );
       }
     },
   });
@@ -50,13 +60,17 @@ export default function useDriver() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["drivers"] });
-      window.alert("driver modified succfully");
+      toast.success("driver updated successfully!");
     },
     onError: (error: unknown) => {
       if (error instanceof Error) {
-        console.log("Error: " + error.message, "error");
+        toast.error(
+          error.message || "An error occurred while updating the driver."
+        );
       } else {
-        console.log("An unexpected error occurred", "error");
+        toast.error(
+          "An error occurred while adding the driver. Please try again"
+        );
       }
     },
   });

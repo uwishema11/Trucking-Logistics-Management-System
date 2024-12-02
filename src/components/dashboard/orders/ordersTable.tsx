@@ -68,7 +68,7 @@ const OrdersTable = () => {
   ];
 
   const filteredData = data.filter((order: orderData) => {
-    const matchesSearch = order.customer_name
+    const matchesSearch = order.id
       .toLowerCase()
       .includes(search.toLowerCase());
     const matchesFilter = filter === "All" || order.order_status === filter;
@@ -130,7 +130,7 @@ const OrdersTable = () => {
           <Search className="search_icon" />
           <input
             type="text"
-            placeholder="Search here..."
+            placeholder="Search here by order id..."
             value={search}
             onChange={handleSearchChange}
             className="search_input"
