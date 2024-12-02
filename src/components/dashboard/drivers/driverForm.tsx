@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { editDriverData, driverData } from "@/types/driver";
+
 import { z } from "zod";
+
 import { useTruck } from "@/hooks/trucks/useTruck";
+import { editDriverData, driverData } from "@/types/driver";
 import { driverSchema } from "@/validations/driverValidation";
 import "@/styles/formStyles.scss";
 
@@ -156,8 +158,8 @@ const DriverForm: React.FC<DriverFormProps> = ({
               {isLoading
                 ? "Submitting..."
                 : initialData
-                ? "Update Driver"
-                : "Add Driver"}
+                  ? "Update Driver"
+                  : "Add Driver"}
             </button>
             <button type="button" onClick={onClose} className="cancel-button">
               Cancel

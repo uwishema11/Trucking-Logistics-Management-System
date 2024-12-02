@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+
 import { z } from "zod";
-import { orderData, editOrderData } from "@/types/order";
-import { useTruck } from "@/hooks/trucks/useTruck";
+
 import { useGetDrivers } from "@/hooks/drivers/useGetDrivers";
+import { useTruck } from "@/hooks/trucks/useTruck";
+import { orderData, editOrderData } from "@/types/order";
 import { orderSchema } from "@/validations/orderValidation";
 import "@/styles/formStyles.scss";
 
@@ -159,8 +161,8 @@ const OrdersForm: React.FC<DriverFormProps> = ({
               {isLoading
                 ? "Submitting..."
                 : initialData
-                ? "Update Order"
-                : "Add Order"}
+                  ? "Update Order"
+                  : "Add Order"}
             </button>
             <button type="button" onClick={onClose} className="cancel-button">
               Cancel

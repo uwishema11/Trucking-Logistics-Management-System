@@ -10,11 +10,11 @@ interface cardProps {
 const Card = ({ Total, TotalValue, Available, AvailableValue }: cardProps) => {
   return (
     <div className={styles.small_card}>
-      <div className= {styles.total}>
+      <div className={styles.total}>
         <h3>{Total}</h3>
         <p>{TotalValue}</p>
       </div>
-      <div className= {styles.Available}>
+      <div className={styles.Available}>
         <h3>{Available}</h3>
         <p>{AvailableValue}</p>
       </div>

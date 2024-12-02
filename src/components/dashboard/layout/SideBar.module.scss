@@ -1,11 +1,14 @@
 .sidebar {
   width: 224px;
-  background-color:#457b9d;;
+  background-color: #457b9d;
   color: white;
   height: 100vh;
   padding: 20px;
-  left: 224px;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
   transition: left 0.3s ease;
+
   .logo {
     font-size: 1.5rem;
     font-weight: bold;
@@ -39,10 +42,38 @@
       }
     }
   }
+
+  .logout {
+    margin-top: auto; 
+    text-align: center; 
+
+    button {
+      background-color: #0a2e52; 
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: #004080; 
+      }
+
+      svg {
+        margin-right: 8px; 
+      }
+    }
+  }
+
   @media (max-width: 768px) {
     margin-left: -220px;
     width: auto;
   }
+
   &.open {
     margin-left: 0;
   }

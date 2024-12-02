@@ -1,9 +1,11 @@
 "use client";
 import React from "react";
+
 import { Menu } from "lucide-react";
 import Image from "next/image";
-import styles from "./Header.module.scss";
 import { useSession } from "next-auth/react";
+
+import styles from "./Header.module.scss";
 
 const HeaderDashboard = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
   const { data: session } = useSession();
@@ -12,7 +14,7 @@ const HeaderDashboard = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
   return (
     <div className={styles.header}>
       <button onClick={toggleSidebar} className={styles.burger_icon}>
-        <Menu/>
+        <Menu />
       </button>
       <h1 className={styles.title}>Dashboard</h1>
       <div className={styles.profile}>
@@ -27,10 +29,6 @@ const HeaderDashboard = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
           width={48}
           height={48}
         />
-        <div className={styles.dropdown}>
-          <a href="#">Profile</a>
-          <a href="#">Logout</a>
-        </div>
       </div>
     </div>
   );

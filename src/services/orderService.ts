@@ -1,6 +1,7 @@
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import { orderData, editOrderData} from "@/types/order";
+
+import { orderData, editOrderData } from "@/types/order";
 
 export const addOrder = async (data: orderData) => {
   const response = await axios.post(`http://localhost:4000/orders`, {

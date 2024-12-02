@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { editTruckData, truckData } from "@/types/truck";
+
 import { z } from "zod";
+
+import { editTruckData, truckData } from "@/types/truck";
 import "@/styles/formStyles.scss";
 
 interface TruckFormProps {
@@ -122,8 +124,8 @@ const TruckForm: React.FC<TruckFormProps> = ({
               {isLoading
                 ? "Submitting..."
                 : initialData
-                ? "Update Truck"
-                : "Add Truck"}
+                  ? "Update Truck"
+                  : "Add Truck"}
             </button>
             <button type="button" onClick={onClose} className="cancel-button">
               Cancel

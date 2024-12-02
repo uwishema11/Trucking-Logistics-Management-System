@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { truckData, editTruckData } from "@/types/truck";
+
 import { addTruck, deleteTruck, editTruck } from "@/services/truckService";
+import { truckData, editTruckData } from "@/types/truck";
 
 export default function useCreateTruck() {
   const queryClient = useQueryClient();

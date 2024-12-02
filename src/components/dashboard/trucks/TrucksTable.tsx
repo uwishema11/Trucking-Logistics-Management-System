@@ -1,13 +1,16 @@
 "use client";
 import React, { useState } from "react";
-import { Search, PlusCircle } from "lucide-react";
+
 import { ColumnDef } from "@tanstack/react-table";
-import { useTruck } from "@/hooks/trucks/useTruck";
-import { truckData, editTruckData } from "@/types/truck";
+import { Search, PlusCircle } from "lucide-react";
 import { MoreHorizontal } from "lucide-react";
+
+import { useTruck } from "@/hooks/trucks/useTruck";
+import useCreateTruck from "@/hooks/trucks/useTruckMutation";
+import { truckData, editTruckData } from "@/types/truck";
+
 import Table from "../Table";
 import TruckForm from "./TruckFom";
-import useCreateTruck from "@/hooks/trucks/useTruckMutation";
 import "@/styles/tableStyles.scss";
 
 const Trucks = () => {

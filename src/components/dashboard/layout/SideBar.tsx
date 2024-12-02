@@ -1,5 +1,8 @@
-import { LeftSideMenuData } from "./LeftSectionMenuData";
+import { LogOut } from "lucide-react";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
+
+import { LeftSideMenuData } from "./LeftSectionMenuData";
 import styles from "./SideBar.module.scss";
 
 const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
@@ -17,6 +20,14 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
           </li>
         ))}
       </ul>
+      <div>
+        <div className={styles.logout}>
+          <button onClick={() => signOut()}>
+            <LogOut />
+            <span>Logout</span>
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

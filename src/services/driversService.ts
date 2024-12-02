@@ -1,5 +1,6 @@
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
+
 import { driverData, editDriverData } from "@/types/driver";
 
 export const addDriver = async (data: driverData) => {
@@ -73,4 +74,3 @@ export const editDriver = async (data: editDriverData) => {
     throw error;
   }
 };
-
