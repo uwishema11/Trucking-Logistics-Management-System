@@ -80,13 +80,6 @@
       "assigned_truck": "2",
       "assigned_driver": "2",
       "order_status": "complete"
-    },
-    {
-      "id": "4ad8472e-5202-43c0-9192-7a9d1332ef69",
-      "customer_name": "Jean",
-      "assigned_truck": "2",
-      "assigned_driver": "1",
-      "order_status": "pending"
     }
   ]
 }

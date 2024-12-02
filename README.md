@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Trucking Logistics Management System
 
-## Getting Started
+## 🚚 Project Overview
 
-First, run the development server:
+This project is a Trucking Logistics Management System built using Next.js, NextAuth, and React Query to simulate the interaction between truck owners, drivers, and customers. The system allows users to manage trucks, drivers, and orders in a logistics environment. Users can log in using Google OAuth 2.0 via NextAuth for authentication and interact with the application through a responsive, user-friendly interface.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠 Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Next.js (v14+)**
+- **NextAuth (Google OAuth 2.0)**
+- **React Query**
+- **SCSS**
+- **JSON Server (Backend Simulation)**
+- **ESLint and Prettier** (for code quality and formatting)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📋 Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Node.js** (v18+)
+- **npm** 
+- **Git**
+- **Google OAuth Credentials**
 
-## Learn More
+## 🚀 Installation Steps
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone Repository**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```bash
+    git clone https://github.com/uwishema11/Trucking-Logistics-Management-System.git
+    cd Trucking-Logistics-Management-System
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Install Dependencies**
 
-## Deploy on Vercel
+    ```bash
+    pnpm install
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Configure Environment Variables**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    Create a `.env.local` file in the project root with the following contents:
+
+    ```env
+    NEXTAUTH_SECRET=generate_a_random_secret_here
+    GOOGLE_CLIENT_ID=your_google_oauth_client_id
+    GOOGLE_CLIENT_SECRET=your_google_oauth_client_secret
+    ```
+
+4. **Setup JSON Server**
+
+    Install JSON Server globally:
+
+    ```bash
+    npm install -g json-server
+    ```
+
+5. **Run Backend Simulation**
+
+    Start the JSON Server:
+
+    ```bash
+    pnpm run json-server
+    ```
+
+6. **Start Development Server**
+
+    Start the frontend development server:
+
+    ```bash
+    pnpm run dev 
+    ```
+
+## ✨ Key Features
+
+- **🔐 Google OAuth Authentication**
+- **🚚 Truck Management**  
+    - View, add, edit, remove trucks
+    - Track truck status
+- **👨‍✈️ Driver Management**  
+    - View, add, edit, remove drivers
+    - Assign drivers to trucks
+- **📦 Order Management**  
+    - View, add, edit orders
+    - Assign drivers and trucks
+    - Track order status
+
+## 📞 Contact
+
+[Celine Uwishrma] - [uwishemaceline4@gmail.com]  
+Project Link: [https://github.com/uwishema11/Trucking-Logistics-Management-System]
