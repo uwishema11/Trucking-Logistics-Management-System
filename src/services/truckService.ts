@@ -1,8 +1,12 @@
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 import { editTruckData, truckData } from "@/types/truck";
 
 export const addTruck = async (data: truckData) => {
-  const response = await axios.post(`http://localhost:4000/trucks`, data);
+  const response = await axios.post(`http://localhost:4000/trucks`, {
+    ...data,
+    id: uuidv4(),
+  });
   if (response.status !== 201) {
     throw new Error(response.data.message);
   }
@@ -24,7 +28,9 @@ export const fetchSingleTruck = async (truckId: string) => {
   return response.data;
 };
 export const deleteTruck = async (truckId: string) => {
-  const response = await axios.delete(`http://localhost:4000/trucks/${truckId}`);
+  const response = await axios.delete(
+    `http://localhost:4000/trucks/${truckId}`
+  );
   if (response.status !== 200) {
     throw new Error("Failed to delete a truck");
   }

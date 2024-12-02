@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { editTruckData, truckData } from "@/types/truck";
 import { z } from "zod";
-import "./TruckForm.scss";
+import "@/styles/formStyles.scss";
 
 interface TruckFormProps {
   onSubmit: (data: truckData | editTruckData) => void;
@@ -50,7 +50,7 @@ const TruckForm: React.FC<TruckFormProps> = ({
     try {
       const validatedData = truckSchema.parse(formData);
       setErrors({});
-      onSubmit(validatedData); 
+      onSubmit(validatedData);
     } catch (err) {
       if (err instanceof z.ZodError) {
         const fieldErrors: Record<string, string> = {};
@@ -65,22 +65,10 @@ const TruckForm: React.FC<TruckFormProps> = ({
   };
 
   return (
-    <div className="truck-form-overlay">
-      <div className="truck-form-container">
+    <div className="form-overlay">
+      <div className="form-container">
         <h2>{initialData ? "Edit Truck" : "Add New Truck"}</h2>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="id">Truck ID</label>
-            <input
-              type="text"
-              id="id"
-              name="id"
-              value={formData.id}
-              onChange={handleChange}
-            />
-            {errors.id && <span className="error-message">{errors.id}</span>}
-          </div>
-
           <div className="form-group">
             <label htmlFor="plate_number">Plate Number</label>
             <input

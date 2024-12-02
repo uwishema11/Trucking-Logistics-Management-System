@@ -1,35 +1,39 @@
 import React, { useState } from "react";
-import { editDriverData, driverData } from "@/types/driver";
 import { z } from "zod";
+import { orderData, editOrderData } from "@/types/order";
 import { useTruck } from "@/hooks/trucks/useTruck";
-import { driverSchema } from "@/validations/driverValidation";
+import { useGetDrivers } from "@/hooks/drivers/useGetDrivers";
+import { orderSchema } from "@/validations/orderValidation";
 import "@/styles/formStyles.scss";
 
 interface DriverFormProps {
-  onSubmit: (data: driverData | editDriverData) => void;
+  onSubmit: (data: orderData | editOrderData) => void;
   onClose: () => void;
-  initialData?: editDriverData | null;
+  initialData?: editOrderData | null;
   isLoading?: boolean;
 }
 
-const DriverForm: React.FC<DriverFormProps> = ({
+const OrdersForm: React.FC<DriverFormProps> = ({
   onSubmit,
   onClose,
   initialData = null,
   isLoading = false,
 }) => {
-  const [formData, setFormData] = useState<driverData | editDriverData>({
+  const [formData, setFormData] = useState<orderData | editOrderData>({
     id: initialData?.id || "",
-    name: initialData?.name || "",
+    customer_name: initialData?.customer_name || "",
     assigned_truck: initialData?.assigned_truck || "null",
-    contact_number: initialData?.contact_number || "",
-    license_number: initialData?.license_number || "",
-    status: initialData?.status || "Available",
+    assigned_driver: initialData?.assigned_driver || "null",
+    order_status: initialData?.order_status || "pending",
   });
-
   const [errors, setErrors] = useState<Record<string, string>>({});
-
   const { data } = useTruck();
+  const { data: drivers } = useGetDrivers();
+
+  const availableDrivers = drivers?.filter(
+    (driver: { status: string }) => driver.status == "Available"
+  );
+
   const availableTrucks = data?.filter(
     (truck: { status: string }) => truck.status == "Available"
   );
@@ -48,7 +52,7 @@ const DriverForm: React.FC<DriverFormProps> = ({
     e.preventDefault();
     console.log("Form submitted", formData);
     try {
-      const validatedData = driverSchema.parse(formData);
+      const validatedData = orderSchema.parse(formData);
       console.log("Validated data:", validatedData);
       setErrors({});
       onSubmit(validatedData);
@@ -69,49 +73,48 @@ const DriverForm: React.FC<DriverFormProps> = ({
   return (
     <div className="form-overlay">
       <div className="form-container">
-        <h2>{initialData ? "Edit Driver" : "Add New Driver"}</h2>
+        <h2>{initialData ? "Edit Order" : "Add New Order"}</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">Customer Name</label>
             <input
               type="text"
-              id="name"
-              name="name"
-              value={formData.name}
+              id="customer_name"
+              name="customer_name"
+              value={formData.customer_name}
               onChange={handleChange}
             />
-            {errors.name && (
-              <span className="error-message">{errors.name}</span>
+            {errors.customer_name && (
+              <span className="error-message">{errors.customer_name}</span>
             )}
           </div>
           <div className="form-group">
-            <label htmlFor="contact_number">Contact_number</label>
-            <input
-              type="text"
-              id="contact_number"
-              name="contact_number"
-              value={formData.contact_number}
+            <label htmlFor="assigned_driver">
+              {initialData ? "Assigned Driver" : "Assign Driver"}
+            </label>
+            <select
+              id="assigned_driver"
+              name="assigned_driver"
+              value={formData.assigned_driver}
               onChange={handleChange}
-            />
-            {errors.name && (
-              <span className="error-message">{errors.contact_number}</span>
+              className="custom-select"
+            >
+              <option value="">Select a driver</option>
+              {availableDrivers &&
+                availableDrivers.map((driver: { id: string; name: string }) => (
+                  <option key={driver.id} value={driver.id}>
+                    {driver.id}
+                  </option>
+                ))}
+            </select>
+            {errors.assigned_truck && (
+              <span className="error-message">{errors.assigned_truck}</span>
             )}
           </div>
           <div className="form-group">
-            <label htmlFor="license_number">License_number</label>
-            <input
-              type="text"
-              id="license_number"
-              name="license_number"
-              value={formData.license_number}
-              onChange={handleChange}
-            />
-            {errors.license_number && (
-              <span className="error-message">{errors.license_number}</span>
-            )}
-          </div>
-          <div className="form-group">
-            <label htmlFor="assigned_truck">Assign Truck</label>
+            <label htmlFor="assigned_truck">
+              {initialData ? "Assigned Truck" : "Assign Truck"}
+            </label>
             <select
               id="assigned_truck"
               name="assigned_truck"
@@ -135,12 +138,12 @@ const DriverForm: React.FC<DriverFormProps> = ({
             <label htmlFor="status">Status</label>
             <select
               id="status"
-              name="status"
-              value={formData.status}
+              name="order_status"
+              value={formData.order_status}
               onChange={handleChange}
             >
-              <option value="Available">Available</option>
-              <option value="Delivering">Delivering</option>
+              <option value="pending">pending</option>
+              <option value="complete">complete</option>
             </select>
             {errors.status && (
               <span className="error-message">{errors.status}</span>
@@ -156,8 +159,8 @@ const DriverForm: React.FC<DriverFormProps> = ({
               {isLoading
                 ? "Submitting..."
                 : initialData
-                ? "Update Driver"
-                : "Add Driver"}
+                ? "Update Order"
+                : "Add Order"}
             </button>
             <button type="button" onClick={onClose} className="cancel-button">
               Cancel
@@ -169,4 +172,4 @@ const DriverForm: React.FC<DriverFormProps> = ({
   );
 };
 
-export default DriverForm;
+export default OrdersForm;

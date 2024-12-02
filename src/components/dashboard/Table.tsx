@@ -32,8 +32,8 @@ function Table<T>({ data, columns }: TableProps<T>) {
   });
 
   return (
-    <div className="table-container">
-      <table className="custom-table">
+    <div className="table_container">
+      <table className="custom_table">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
@@ -61,7 +61,7 @@ function Table<T>({ data, columns }: TableProps<T>) {
         </tbody>
       </table>
       <div className="pagination">
-        <div className="rows-per-page">
+        <div className="rows_per_page">
           <label htmlFor="rows-per-page">Rows per page: </label>
           <select
             id="rows-per-page"
@@ -75,7 +75,7 @@ function Table<T>({ data, columns }: TableProps<T>) {
             ))}
           </select>
         </div>
-        <div className="pagination-controls">
+        <div className="pagination_controls">
           <button
             className="previous"
             onClick={() => table.previousPage()}
