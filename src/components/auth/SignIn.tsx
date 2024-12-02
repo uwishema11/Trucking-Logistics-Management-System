@@ -17,11 +17,9 @@ const LoginPage = () => {
 
       if (result?.error) {
         console.error("Sign in error:", result.error);
-        // Handle error (show message to user)
         return;
       }
 
-      // If successful, manually redirect
       router.push("/");
     } catch (error) {
       console.error("Unexpected sign-in error:", error);

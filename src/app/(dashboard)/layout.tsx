@@ -23,10 +23,6 @@ const DashboardLayout: React.FC<Properties> = ({ children }) => {
         <HeaderDashboard toggleSidebar={toggleSidebar} />
         <main
           className="dashboard-main"
-          // style={{
-          //   marginLeft: isSidebarOpen ? "224px" : "0",
-          //   transition: "margin 0.3s ease",
-          // }}
         >
           <Suspense fallback={<ActionLoader />}>{children}</Suspense>
         </main>
