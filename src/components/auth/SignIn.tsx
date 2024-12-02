@@ -42,7 +42,7 @@ const LoginPage = () => {
           <span>
             <FcGoogle />
           </span>
-          Continue with Google
+          Login with Google
         </button>
       </div>
       <div className={styles["image-section"]}></div>
