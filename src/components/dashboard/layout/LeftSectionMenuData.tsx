@@ -27,11 +27,11 @@ export const LeftSideMenuData = [
   {
     name: "Orders",
     link: "/orders",
-    icons: <ShoppingCart size={16} />, 
+    icons: <ShoppingCart size={16} />,
   },
   {
     name: "Trucks",
     link: "/trucks",
-    icons: <Truck size={16} />, 
+    icons: <Truck size={16} />,
   },
 ];

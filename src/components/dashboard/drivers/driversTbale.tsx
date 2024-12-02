@@ -1,13 +1,17 @@
 "use client";
 import React, { useState } from "react";
-import { Search, PlusCircle } from "lucide-react";
+
 import { ColumnDef } from "@tanstack/react-table";
-import { driverData, editDriverData } from "@/types/driver";
+import { Search, PlusCircle } from "lucide-react";
 import { MoreHorizontal } from "lucide-react";
-import Table from "../Table";
-import DriverForm from "./driverForm";
+
 import useDriver from "@/hooks/drivers/useDriver";
 import { useGetDrivers } from "@/hooks/drivers/useGetDrivers";
+import { driverData, editDriverData } from "@/types/driver";
+
+import Table from "../Table";
+import DriverForm from "./driverForm";
+
 import "@/styles/tableStyles.scss";
 
 const DriversTable = () => {

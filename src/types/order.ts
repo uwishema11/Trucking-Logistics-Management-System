@@ -13,7 +13,7 @@ export interface editOrderData {
   order_status?: string;
 }
 
-  export interface editstatusProps {
-    orderId: string;
-    newStatus: string;
-  }
+export interface editstatusProps {
+  orderId: string;
+  newStatus: string;
+}

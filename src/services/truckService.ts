@@ -1,5 +1,6 @@
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
+
 import { editTruckData, truckData } from "@/types/truck";
 
 export const addTruck = async (data: truckData) => {

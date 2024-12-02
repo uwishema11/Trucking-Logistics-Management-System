@@ -1,8 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { driverData, editDriverData } from "@/types/driver";
+
 import { addDriver, deleteDriver, editDriver } from "@/services/driversService";
-
-
+import { driverData, editDriverData } from "@/types/driver";
 
 export default function useDriver() {
   const queryClient = useQueryClient();
@@ -14,7 +13,7 @@ export default function useDriver() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["drivers"] });
-       window.alert("driver added succfully");
+      window.alert("driver added succfully");
     },
     onError: (error: unknown) => {
       if (error instanceof Error) {
@@ -39,20 +38,19 @@ export default function useDriver() {
         console.log("Error: " + error.message, "error");
       } else {
         console.log("An unexpected error occurred", "error");
-        window.alert('')
+        window.alert("");
       }
     },
   });
 
   const updateDriverMutation = useMutation({
-  
     mutationFn: async (driver: editDriverData) => {
       const data = await editDriver(driver);
       return data;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["drivers"] });
-       window.alert("driver modified succfully");
+      window.alert("driver modified succfully");
     },
     onError: (error: unknown) => {
       if (error instanceof Error) {

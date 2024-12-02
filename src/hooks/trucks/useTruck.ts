@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+
 import { fetchTrucks } from "@/services/truckService";
 
 export const useTruck = () => {

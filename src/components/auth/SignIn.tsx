@@ -1,8 +1,9 @@
 "use client";
 
-import { FcGoogle } from "react-icons/fc";
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import { FcGoogle } from "react-icons/fc";
+
 import styles from "./login.module.scss";
 
 const LoginPage = () => {
@@ -11,7 +12,7 @@ const LoginPage = () => {
   const handleGoogleSignIn = async () => {
     try {
       const result = await signIn("google", {
-        redirect: false, 
+        redirect: false,
         callbackUrl: "/",
       });
 

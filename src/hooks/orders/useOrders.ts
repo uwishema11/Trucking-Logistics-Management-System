@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+
+import { addOrder, deleteOrder, editOrder } from "@/services/orderService";
 import { orderData, editOrderData } from "@/types/order";
-import { addOrder, deleteOrder, editOrder} from "@/services/orderService";
 
 export default function useOrders() {
   const queryClient = useQueryClient();

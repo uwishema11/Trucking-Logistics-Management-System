@@ -1,11 +1,13 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import Card from "../Card";
-import styles from "./DashboardComponent.module.scss";
+
+import { useGetDrivers } from "@/hooks/drivers/useGetDrivers";
 import { useGetOrders } from "@/hooks/orders/useGetOrders";
 import { useTruck } from "@/hooks/trucks/useTruck";
-import { useGetDrivers } from "@/hooks/drivers/useGetDrivers";
+
+import Card from "../Card";
+import styles from "./DashboardComponent.module.scss";
 
 const DashboardComponent = () => {
   const { data: session } = useSession();
