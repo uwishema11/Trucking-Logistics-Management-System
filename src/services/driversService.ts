@@ -19,20 +19,26 @@ export const addDriver = async (data: driverData) => {
 
 export const fetchDrivers = async () => {
   const response = await axios.get(`http://localhost:4000/drivers`);
-  console.log(response.status);
   if (response.status !== 200) {
     throw new Error("Failed to fetch data");
   }
   return response.data;
 };
 export const fetchSingleDriver = async (driverId: string) => {
-  const response = await axios.get(`http://localhost:4000/drivers${driverId}`);
+  const response = await axios.get(`http://localhost:4000/drivers/${driverId}`);
   if (response.status !== 200) {
     throw new Error("Failed to fetch data");
   }
   return response.data;
 };
 export const deleteDriver = async (driverId: string) => {
+  const driver = await fetchSingleDriver(driverId);
+
+  if (driver.status !== "Available") {
+    throw new Error(
+      "Cannot delete a driver who is Delivering an order.Please ensures that the order is complete before removing the driver"
+    );
+  }
   const response = await axios.delete(
     `http://localhost:4000/drivers/${driverId}`
   );

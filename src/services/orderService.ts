@@ -22,7 +22,7 @@ export const fetchOrders = async () => {
   return response.data;
 };
 export const fetchSingleOrder = async (orderId: string) => {
-  const response = await axios.get(`http://localhost:4000/orders${orderId}`);
+  const response = await axios.get(`http://localhost:4000/orders/${orderId}`);
   console.log(`fetching data with idi ${orderId}`);
   if (response.status !== 200) {
     throw new Error("Failed to fetch data");

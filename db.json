@@ -1,28 +1,22 @@
 {
   "trucks": [
     {
-      "id": "1",
-      "plate_number": "XYZ1245",
-      "capacity": 67,
-      "status": "Available"
-    },
-    {
-      "id": "2",
-      "plate_number": "RAB326B",
-      "capacity": 36,
-      "status": "Available"
-    },
-    {
-      "id": "3",
-      "plate_number": "RAB32t",
-      "capacity": 13,
-      "status": "Delivering"
-    },
-    {
       "id": "4",
       "plate_number": "XYZ128",
-      "capacity": 46,
+      "capacity": 12,
       "status": "Delivering"
+    },
+    {
+      "id": "3970e732-40ab-4bba-8c0b-4dd5bf5e7565",
+      "plate_number": "RAB321Vx",
+      "capacity": 12,
+      "status": "Available"
+    },
+    {
+      "id": "b1380f57-9af2-44a5-9b25-75f829363551",
+      "plate_number": "RAB3215C",
+      "capacity": 45,
+      "status": "Available"
     }
   ],
   "drivers": [
@@ -40,7 +34,7 @@
       "license_number": "L1235t",
       "assigned_truck": "4",
       "contact_number": "07843265794",
-      "status": "Delivering"
+      "status": "Available"
     },
     {
       "id": "4",
@@ -48,7 +42,7 @@
       "license_number": "L12345t",
       "assigned_truck": "3",
       "contact_number": "0783210279",
-      "status": "Delivering"
+      "status": "Available"
     },
     {
       "id": "89e4fae8-532d-4965-ab6c-03e0cfe4ca76",
@@ -62,24 +56,31 @@
   "orders": [
     {
       "id": "ee69243f-096c-4d78-9a4a-aba30b377972",
-      "customer_name": "Iranzi Jean",
+      "customer_name": "Iranzi John",
       "assigned_truck": "1",
-      "assigned_driver": "2",
+      "assigned_driver": "4",
       "order_status": "complete"
     },
     {
       "id": "47f8f54e-8e9f-45b5-9b7d-f8a7633fb0ea",
-      "customer_name": "Mukashimwe",
+      "customer_name": "Mukashimwe Anna",
       "assigned_truck": "1",
-      "assigned_driver": "2",
+      "assigned_driver": "4",
       "order_status": "complete"
     },
     {
       "id": "d20bb14f-fcf8-4ab8-b5f4-c859db263642",
       "customer_name": "Nyiraneza Elina",
-      "assigned_truck": "2",
-      "assigned_driver": "2",
+      "assigned_truck": "1",
+      "assigned_driver": "3",
       "order_status": "complete"
+    },
+    {
+      "id": "8827855a-3151-4942-8833-7187bd19c32f",
+      "customer_name": "Mukamana Rosine Irera",
+      "assigned_truck": "1",
+      "assigned_driver": "89e4fae8-532d-4965-ab6c-03e0cfe4ca76",
+      "order_status": "pending"
     }
   ]
 }

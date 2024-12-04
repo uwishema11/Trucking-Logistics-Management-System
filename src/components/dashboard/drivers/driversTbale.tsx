@@ -67,7 +67,7 @@ const DriversTable = () => {
   ];
 
   const filteredData = data.filter((driver: driverData) => {
-    const matchesSearch = driver.name
+    const matchesSearch = driver.id
       .toLowerCase()
       .includes(search.toLowerCase());
     const matchesFilter = filter === "All" || driver.status === filter;
@@ -129,7 +129,7 @@ const DriversTable = () => {
           <Search className="search_icon" />
           <input
             type="text"
-            placeholder="Search by driver's name..."
+            placeholder="Search by driver's id..."
             value={search}
             onChange={handleSearchChange}
             className="search_input"

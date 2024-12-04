@@ -75,7 +75,7 @@ This project is a Trucking Logistics Management System built using Next.js, Next
 - **🚚 Truck Management**  
     - View, add, edit, remove trucks
     - Track truck status
-- **👨‍✈️ Driver Management**  
+- **👨 Driver Management**  
     - View, add, edit, remove drivers
     - Assign drivers to trucks
 - **📦 Order Management**  

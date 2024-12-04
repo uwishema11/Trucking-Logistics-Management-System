@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 import { addTruck, deleteTruck, editTruck } from "@/services/truckService";
 import { truckData, editTruckData } from "@/types/truck";
@@ -11,20 +12,15 @@ export default function useCreateTruck() {
       const data = await addTruck(truck);
       return data;
     },
-    onSuccess: (response) => {
-      console.log("u are mutating data");
-      if (response.status === 201) {
-        console.log(response.status);
-        queryClient.invalidateQueries({ queryKey: ["trucks"] });
-      } else {
-        console.log(response.message);
-      }
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["trucks"] });
+      toast.success("Truck added successfully!");
     },
     onError: (error: unknown) => {
       if (error instanceof Error) {
-        console.log("Error: " + error.message, "error");
+        toast.error(`${error.message}`);
       } else {
-        console.log("An unexpected error occurred", "error");
+        toast.error("Failed to add truck. Please try again");
       }
     },
   });
@@ -35,13 +31,18 @@ export default function useCreateTruck() {
       return data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["blogs"] });
+      queryClient.invalidateQueries({ queryKey: ["trucks"] });
+      toast.success("Truck deleted successfully!");
     },
     onError: (error: unknown) => {
+      console.log(error);
       if (error instanceof Error) {
-        console.log("Error: " + error.message, "error");
+        toast.error(
+          error.message ||
+            "An error occurred while deleting the truck. Please try again"
+        );
       } else {
-        console.log("An unexpected error occurred", "error");
+        toast.error(`An unexpected error occurred. Please try again`);
       }
     },
   });
@@ -51,19 +52,17 @@ export default function useCreateTruck() {
       const data = await editTruck(truck);
       return data;
     },
-    onSuccess: (response) => {
-      console.log("u are mutating data by editing it");
-      if (response.status === 201) {
-        queryClient.invalidateQueries({ queryKey: ["trucks"] });
-      } else {
-        console.log(response.message);
-      }
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["trucks"] });
+      toast.success("Truck updated successfully!");
     },
     onError: (error: unknown) => {
       if (error instanceof Error) {
-        console.log("Error: " + error.message, "error");
+        toast.error(`${error.message}`);
       } else {
-        console.log("An unexpected error occurred", "error");
+        toast.error(
+          `An unexpected error occurred While updating truck. Please try again`
+        );
       }
     },
   });

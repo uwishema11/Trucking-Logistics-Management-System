@@ -1,9 +1,11 @@
 import { z } from "zod";
 
 export const truckSchema = z.object({
-  status: z.enum(["Available", "Delivering"]),
+  id: z.string(),
   plate_number: z
     .string()
-    .min(4, "Plate_number must be atleast 4 characters long"),
-  capacity: z.number(),
+    .min(1, "Plate Number is required")
+    .regex(/^[A-Za-z0-9-]+$/, "Invalid Plate Number"),
+  capacity: z.number().min(1, "Capacity must be greater than 0"),
+  status: z.enum(["Available", "Delivering"]),
 });

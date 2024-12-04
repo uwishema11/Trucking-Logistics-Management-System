@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 import { addOrder, deleteOrder, editOrder } from "@/services/orderService";
 import { orderData, editOrderData } from "@/types/order";
@@ -13,11 +14,12 @@ export default function useOrders() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["orders"] });
-      window.alert("order added succfully");
+      toast.success("order added successfully!");
     },
     onError: (error: unknown) => {
       if (error instanceof Error) {
         console.log("Error: " + error.message, "error");
+        toast.error(`${error.message}`);
       } else {
         console.log("An unexpected error occurred", "error");
       }
@@ -31,14 +33,15 @@ export default function useOrders() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["orders"] });
-      window.alert("deleted succfully");
+      toast.success("order deleted successfully!");
     },
     onError: (error: unknown) => {
       if (error instanceof Error) {
-        console.log("Error: " + error.message, "error");
+        toast.error(`${error.message}`);
       } else {
-        console.log("An unexpected error occurred", "error");
-        window.alert("");
+        toast.error(
+          `An unexpected error occurred! Failed to delete an order. Please again`
+        );
       }
     },
   });
@@ -50,14 +53,15 @@ export default function useOrders() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["orders"] });
-      window.alert("order modified succfully");
-      // updateOrderStatus(order.id, order.order_status)
+      toast.success("order updated successfully!");
     },
     onError: (error: unknown) => {
       if (error instanceof Error) {
-        console.log("Error: " + error.message, "error");
+        toast.error(`${error.message}`);
       } else {
-        console.log("An unexpected error occurred", "error");
+        toast.error(
+          `An unexpected error occurred! Failed to update an order. Please again`
+        );
       }
     },
   });

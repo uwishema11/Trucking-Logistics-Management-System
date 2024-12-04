@@ -77,6 +77,20 @@ const OrdersForm: React.FC<DriverFormProps> = ({
       <div className="form-container">
         <h2>{initialData ? "Edit Order" : "Add New Order"}</h2>
         <form onSubmit={handleSubmit}>
+          {initialData && (
+            <div className="form-group">
+              <label htmlFor="id">Order ID</label>
+              <input
+                type="text"
+                id="id"
+                name="id"
+                value={formData.id}
+                onChange={handleChange}
+                readOnly
+              />
+              {errors.id && <span className="error-message">{errors.id}</span>}
+            </div>
+          )}
           <div className="form-group">
             <label htmlFor="name">Customer Name</label>
             <input

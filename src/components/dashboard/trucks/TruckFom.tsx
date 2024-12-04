@@ -4,6 +4,7 @@ import { z } from "zod";
 
 import { editTruckData, truckData } from "@/types/truck";
 import "@/styles/formStyles.scss";
+import { truckSchema } from "@/validations/truckValidation";
 
 interface TruckFormProps {
   onSubmit: (data: truckData | editTruckData) => void;
@@ -11,16 +12,6 @@ interface TruckFormProps {
   initialData?: editTruckData | null;
   isLoading?: boolean;
 }
-
-const truckSchema = z.object({
-  id: z.string().min(1, "Truck ID is required"),
-  plate_number: z
-    .string()
-    .min(1, "Plate Number is required")
-    .regex(/^[A-Za-z0-9-]+$/, "Invalid Plate Number"),
-  capacity: z.number().min(1, "Capacity must be greater than 0"),
-  status: z.enum(["Available", "Delivering"]),
-});
 
 const TruckForm: React.FC<TruckFormProps> = ({
   onSubmit,
